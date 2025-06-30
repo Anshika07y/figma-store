@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Figma Store - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero-green {
+            background-color: #00C267;
+            padding-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .hero-images-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            flex-wrap: nowrap;
+        }
+
+        .hero-image-style {
+            width: 33.33%;
+            height: 620px;
+            object-fit: cover;
+            border-radius: 0 0 80% 80%;
+        }
+
+        @media (max-width: 767px) {
+            .hero-image-style {
+                height: auto;
+                aspect-ratio: 2/3;
+            }
+        }
+
+        /* Category section styling */
+        .category-wrapper {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .category-card {
+            flex: 1 1 30%;
+            max-width: 300px;
+        }
+
+        @media (max-width: 767px) {
+            .category-wrapper {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+
+            .category-card {
+                flex: 0 0 33.33%;
+                max-width: 33.33%;
+            }
+        }
+
+        #searchContainer {
+            background: #f1e9e9;
+            padding: 10px 10px;
+            border-bottom: 1px solid #060202;
+            position: relative;
+            z-index: 1050;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="searchContainer" class="d-none px-3 mt-3">
+        <input class="form-control" type="search" id="searchInput" placeholder="Search Products..." />
+    </div>
+    <header class="hero-green text-center" id="header">
+        
+        <!-- NAVBAR -->
+        <nav class="d-flex align-items-center justify-content-between px-3 py-3">
+            <!-- Desktop Left -->
+            <div class="d-none d-md-flex gap-3 align-items-center">
+                <a href="#" id="shopAllBtn" class="btn btn-outline-dark rounded-pill px-4 py-1 fw-semibold">SHOP</a>
+                <a href="#about" class="btn btn-outline-dark rounded-pill px-4 py-1 fw-semibold">ABOUT</a>
+                <i class="fas fa-search fs-5 text-black" id="toggleSearchIcon" style="cursor:pointer;"></i>
+            </div>
+
+            <!-- Mobile Left (Hamburger + Search) -->
+            <div class="d-flex d-md-none gap-3 align-items-center">
+                <i class="fas fa-bars fs-5 text-black" id="hamburgerIcon" style="cursor:pointer;"></i>
+                <i class="fas fa-search fs-5 text-black" id="toggleSearchIconMobile" style="cursor:pointer;"></i>
+            </div>
+
+            <!-- Logo Center -->
+            <h1 class="m-0 fw-bold flex-grow-1 text-center fs-5">THE FIGMA STORE</h1>
+
+            <!-- Desktop Right -->
+            <div class="d-none d-md-flex gap-3 align-items-center">
+                <i class="fas fa-user fs-5 text-black"></i>
+                <button class="btn btn-outline-dark rounded-pill px-4 py-1 fw-semibold">CART <span>0</span></button>
+            </div>
+
+            <!-- Mobile Right -->
+            <div class="d-md-none">
+                <button class="btn btn-outline-dark rounded-circle px-3 py-1 fw-bold">0</button>
+            </div>
+        </nav>
+
+        <!-- Fullscreen Mobile Menu -->
+        <div id="mobileMenu" class="d-none position-fixed top-0 start-0 w-100 h-100 bg-white text-black p-4"
+            style="z-index: 9999;">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <i class="fas fa-times fs-3" id="closeMobileMenu" style="cursor: pointer;"></i>
+                <h1 class="m-0 fw-bold fs-5 text-center flex-grow-1">THE FIGMA STORE</h1>
+                <button class="btn btn-outline-dark rounded-circle px-3 py-1 fw-bold">0</button>
+            </div>
+            <nav class="mt-4 ">
+                <a href="#" class="d-block fw-bold fs-3 mb-3 text-decoration-none" id="shopAllBtnMobile">Shop</a>
+                <a href="#about" class="d-block fw-bold fs-3 mb-4 text-decoration-none">About</a>
+
+            </nav>
+        </div>
+
+        <!-- Search Input -->
+       
+
+        <!-- Hero Images -->
+        <div class="hero-images-wrapper" id="heroSection">
+            <img src="https://store.figma.com/cdn/shop/files/250422_FIGMA_SZN4_S01_GEORGE_143_opt3_FINAL_1000x.jpg"
+                alt="Hero 1" class="hero-image-style" />
+            <img src="https://store.figma.com/cdn/shop/files/250422_FIGMA_SZN4_S08_RALANDA_140_FINAL_1000x.jpg"
+                alt="Hero 2" class="hero-image-style" />
+            <img src="https://store.figma.com/cdn/shop/files/250422_FIGMA_SZN4_S15_KIM_096_FINAL_1000x.jpg?v=1746729587"
+                alt="Hero 3" class="hero-image-style" />
+        </div>
+    </header>
+
+
+    <!-- Main Content -->
+    <div id="mainContent">
+        <section class="container py-5">
+
+
+            <div class="category-wrapper text-center">
+                <div class="category-card">
+                    <a href="category.html?category=womens" class="text-decoration-none text-dark">
+                        <img src="https://store.figma.com/cdn/shop/products/figma-store_framework-tee_01_1000x.jpg?v=1670515454"
+                            class="img-fluid rounded" alt="Womens" style="max-width: 100%;" />
+                        <p class="mt-2 fw-semibold mb-0">CATEGORY</p>
+                        <strong>WOMENS</strong>
+                    </a>
+                </div>
+
+                <div class="category-card">
+                    <a href="category.html?category=accessories" class="text-decoration-none text-dark">
+                        <img src="https://store.figma.com/cdn/shop/products/figma-store_tool-kit-mug_01_1000x.jpg?v=1670520016"
+                            class="img-fluid rounded" alt="Accessories" style="max-width: 100%;" />
+                        <p class="mt-2 fw-semibold mb-0">CATEGORY</p>
+                        <strong>ACCESSORIES</strong>
+                    </a>
+                </div>
+
+                <div class="category-card">
+                    <a href="category.html?category=mens" class="text-decoration-none text-dark">
+                        <img src="https://store.figma.com/cdn/shop/products/Figma-Store-1096_1000x.jpg?v=1636599836"
+                            class="img-fluid rounded" alt="Mens" style="max-width: 100%;" />
+                        <p class="mt-2 fw-semibold mb-0">CATEGORY</p>
+                        <strong>MENS</strong>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Search Results -->
+    <section class="container py-4 d-none" id="searchSection">
+        <h2 class="text-center">Search Results</h2>
+        <div class="row justify-content-center" id="searchResults"></div>
+        <div class="text-center mt-4">
+            <button class="btn btn-outline-dark" onclick="resetView()">Back to Home</button>
+        </div>
+    </section>
+
+    <!-- Shop All Section -->
+    <section class="container py-5 d-none" id="shopAllSection">
+        <h2 class="text-center mb-4">Shop All Products</h2>
+        <div class="row" id="allProductsList"></div>
+        <div class="text-center mt-4">
+            <button class="btn btn-outline-dark" onclick="resetView()">Back to Home</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-warning text-black py-5 mt-5">
+        <div class="container">
+            <div class="row align-items-center text-center text-md-start">
+                <!-- Left Logo Box -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="d-inline-block bg-light text-black p-4 text-center">
+                        <div class="fw-bold">THE</div>
+                        <div class="fw-bold">FIGMA</div>
+                        <div class="fw-bold">STORE</div>
+                    </div>
+                </div>
+
+                <!-- Center Tagline + Links -->
+                <div class="col-md-4 mb-4 mb-md-0 text-center">
+                    <h4 class="fw-bold mb-0">OBJECTS</h4>
+                    <h5 class="fw-bold">THAT INSPIRE.</h5>
+                    <div class="mt-3">
+                        <a href="#" class="text-black fw-semibold me-3">FIGMA ↗</a>
+                        <a href="#" class="text-black fw-semibold me-3">TWITTER</a>
+                        <a href="#" class="text-black fw-semibold me-3">INSTAGRAM</a>
+                        <a href="#" class="text-black fw-semibold">YOUTUBE</a>
+                    </div>
+                </div>
+
+                <!-- Right Links -->
+                <div class="col-md-4 text-md-end text-center">
+                    <p class="mb-1">Privacy & Terms</p>
+                    <p class="mb-2">Contact Us</p>
+                    <button class="btn btn-dark rounded-circle" onclick="scrollToTop()">↑</button>
+                </div>
+            </div>
+
+            <!-- Bottom Marquee -->
+            <div class="text-center fw-bold pt-4 mt-4 border-top border-dark">
+                <marquee direction="right">
+                    FIGMA'S ⏎ MARVELOUSLY ⚪ CONSIDERED 🛡️ COLLECTION ⌛ OF ◆ OBJECTS 🛎️ FOR ⌛ OUR ⬛ TIME ~ ON ~
+                </marquee>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll-to-top function -->
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    </script>
+
+    <!-- Script -->
+    <script src="ecommercedata.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleIcon = document.getElementById("toggleSearchIcon");
+            const toggleSearchIconMobile = document.getElementById("toggleSearchIconMobile");
+            const searchIconMobile = document.getElementById("searchIconMobile");
+            const searchContainer = document.getElementById("searchContainer");
+            const searchForm = document.getElementById("searchForm");
+            const searchInput = document.getElementById("searchInput");
+            const searchResults = document.getElementById("searchResults");
+            const mainContent = document.getElementById("mainContent");
+            const searchSection = document.getElementById("searchSection");
+            const shopAllSection = document.getElementById("shopAllSection");
+            const allProductsList = document.getElementById("allProductsList");
+            const header = document.getElementById("header");
+            const shopBtn = document.getElementById("shopAllBtn");
+            const shopBtnMobile = document.getElementById("shopAllBtnMobile");
+            const hamburgerIcon = document.getElementById("hamburgerIcon");
+            const mobileMenu = document.getElementById("mobileMenu");
+            const closeMobileMenu = document.getElementById("closeMobileMenu");
+
+            // Toggle Search Input (Desktop)
+            if (toggleIcon) {
+                toggleIcon.addEventListener("click", () => {
+                    searchContainer.classList.toggle("d-none");
+                    searchInput.focus();
+                });
+            }
+
+            // Toggle Search Input (Mobile)
+            if (toggleSearchIconMobile) {
+                toggleSearchIconMobile.addEventListener("click", () => {
+                    searchContainer.classList.toggle("d-none");
+                    searchInput.focus();
+                });
+            }
+
+            if (searchIconMobile) {
+                searchIconMobile.addEventListener("click", () => {
+                    if (mobileMenu) mobileMenu.classList.add("d-none");
+                    searchContainer.classList.remove("d-none");
+                    searchInput.focus();
+                });
+            }
+
+            // Toggle Mobile Menu
+            if (hamburgerIcon && mobileMenu) {
+                hamburgerIcon.addEventListener("click", () => {
+                    mobileMenu.classList.toggle("d-none");
+                });
+            }
+
+            if (closeMobileMenu) {
+                closeMobileMenu.addEventListener("click", () => {
+                    mobileMenu.classList.add("d-none");
+                });
+            }
+
+            // Handle Search Form Submit
+            if (searchForm) {
+                searchForm.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const query = searchInput.value.toLowerCase().trim();
+                    if (!query) return;
+
+                    header.style.display = "none";
+                    mainContent.style.display = "none";
+                    shopAllSection.classList.add("d-none");
+                    searchSection.classList.remove("d-none");
+                    searchResults.innerHTML = "";
+
+                    const allProducts = [];
+                    const categories = storeData.products[0];
+
+                    for (const cat in categories) {
+                        allProducts.push(...categories[cat].filter(p =>
+                            p.title.toLowerCase().includes(query)
+                        ));
+                    }
+
+                    if (allProducts.length === 0) {
+                        searchResults.innerHTML = `<p class="text-danger text-center fw-bold">No products found.</p>`;
+                    } else {
+                        allProducts.forEach(product => {
+                            const card = document.createElement("div");
+                            card.className = "col-md-3 mb-4";
+                            card.innerHTML = `
+                        <div class="card h-100">
+                          <img src="${product.thumbnail}" class="card-img-top" alt="${product.title}">
+                          <div class="card-body">
+                            <h5 class="card-title">${product.title}</h5>
+                            <p class="card-text">₹${product.price}</p>
+                            <a href="product.html?id=${product.id}" class="btn btn-dark btn-sm">View Product</a>
+                          </div>
+                        </div>`;
+                            searchResults.appendChild(card);
+                        });
+                    }
+                });
+            }
+
+            // Handle Shop All (Desktop + Mobile)
+            function showAllProducts() {
+                header.style.display = "none";
+                mainContent.style.display = "none";
+                searchSection.classList.add("d-none");
+                shopAllSection.classList.remove("d-none");
+                allProductsList.innerHTML = "";
+
+                const categories = storeData.products[0];
+                for (const cat in categories) {
+                    categories[cat].forEach(product => {
+                        const card = document.createElement("div");
+                        card.className = "col-md-3 mb-4";
+                        card.innerHTML = `
+                      <div class="card h-100">
+                        <img src="${product.thumbnail}" class="card-img-top" alt="${product.title}">
+                        <div class="card-body">
+                          <h5 class="card-title">${product.title}</h5>
+                          <p class="card-text">₹${product.price}</p>
+                          <a href="product.html?id=${product.id}" class="btn btn-dark btn-sm">View Product</a>
+                        </div>
+                      </div>`;
+                        allProductsList.appendChild(card);
+                    });
+                }
+            }
+
+            if (shopBtn) {
+                shopBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    showAllProducts();
+                });
+            }
+
+            if (shopBtnMobile) {
+                shopBtnMobile.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    mobileMenu.classList.add("d-none");
+                    showAllProducts();
+                });
+            }
+
+            // Reset View (e.g., for "Back" button)
+            window.resetView = function () {
+                header.style.display = "block";
+                mainContent.style.display = "block";
+                searchSection.classList.add("d-none");
+                shopAllSection.classList.add("d-none");
+                searchInput.value = "";
+                searchResults.innerHTML = "";
+            };
+
+            // Scroll to Top
+            window.scrollToTop = function () {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            };
+        });
+    </script>
+
+</body>
+
+</html>

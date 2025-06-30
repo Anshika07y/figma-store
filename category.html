@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Category Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      padding-top: 120px;
+    }
+
+    .product-list-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px 0;
+    }
+
+    .product-card {
+      width: 180px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      background: #fff;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 10px;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .card-text {
+      font-size: 0.875rem;
+      margin-bottom: 4px;
+    }
+
+    #searchBar {
+      display: none;
+      background: #fff;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="searchBar">
+    <input type="text" class="form-control" id="searchInput" placeholder="Search products..." />
+  </div>
+
+  <header class="hero-green text-center" id="header">
+    <nav class="d-flex align-items-center justify-content-between px-3 py-3 bg-success">
+      <!-- Desktop Left -->
+      <div class="d-none d-md-flex gap-3 align-items-center">
+        <a href="index.html" class="btn btn-outline-light rounded-pill px-4 py-1 fw-semibold">HOME</a>
+        <a href="#about" class="btn btn-outline-light rounded-pill px-4 py-1 fw-semibold">ABOUT</a>
+        <i class="fas fa-search fs-5 text-white" id="toggleSearch" style="cursor:pointer;"></i>
+      </div>
+
+      <!-- Mobile Left -->
+      <div class="d-flex d-md-none gap-3 align-items-center">
+        <button class="btn p-2" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav">
+          <i class="fas fa-bars text-white"></i>
+        </button>
+        <i class="fas fa-search fs-5 text-white" id="toggleSearch" style="cursor:pointer;"></i>
+      </div>
+
+      <!-- Logo Center -->
+      <h1 class="m-0 fw-bold flex-grow-1 text-center fs-5 text-white">THE FIGMA STORE</h1>
+
+      <!-- Desktop Right -->
+      <div class="d-none d-md-flex gap-3 align-items-center">
+        <i class="fas fa-user fs-5 text-white"></i>
+        <button class="btn btn-outline-light rounded-pill px-4 py-1 fw-semibold">CART <span>0</span></button>
+      </div>
+
+      <!-- Mobile Right -->
+      <div class="d-md-none">
+        <button class="btn btn-outline-light rounded-circle px-3 py-1 fw-bold">0</button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="collapse d-md-none px-3 bg-light" id="mobileNav">
+      <a href="index.html" class="btn btn-outline-dark w-100 my-2">HOME</a>
+      <a href="#about" class="btn btn-outline-dark w-100">ABOUT</a>
+    </div>
+  </header>
+
+  <div class="container mt-5">
+    <h2 class="text-center mt-4" id="categoryTitle">Category</h2>
+    <div class="product-list-container" id="productList"></div>
+  </div>
+
+  <script src="ecommercedata.js"></script>
+  <script>
+    document.getElementById("toggleSearch").addEventListener("click", () => {
+      const searchBar = document.getElementById("searchBar");
+      searchBar.style.display = searchBar.style.display === "block" ? "none" : "block";
+      document.getElementById("searchInput").focus();
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const selectedCategory = params.get('category');
+    const categoryTitle = document.getElementById("categoryTitle");
+    const productList = document.getElementById("productList");
+
+    if (
+      typeof storeData !== "undefined" &&
+      storeData.products &&
+      storeData.products[0][selectedCategory]
+    ) {
+      const products = storeData.products[0][selectedCategory];
+      categoryTitle.textContent = "CATEGORY " + selectedCategory.toUpperCase();
+
+      products.forEach((product) => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <a href="product.html?id=${product.id}" style="text-decoration: none; color: inherit;">
+            <img src="${product.thumbnail}" alt="${product.title}">
+            <div class="card-body">
+              <h6 class="card-title">New! ${product.title}</h6>
+              <p class="card-text">Rs. ${product.price}</p>
+            </div>
+          </a>
+        `;
+        productList.appendChild(card);
+      });
+    }
+  </script>
+
+  <footer class="bg-success text-white p-3 mt-5">
+    <div class="container">
+      <div class="row align-items-center text-center text-md-start">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <div class="d-inline-block bg-light text-black p-4 text-center">
+            <div class="fw-bold">THE</div>
+            <div class="fw-bold">FIGMA</div>
+            <div class="fw-bold">STORE</div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0 text-center">
+          <h4 class="fw-bold mb-0">OBJECTS</h4>
+          <h5 class="fw-bold">THAT INSPIRE.</h5>
+          <div class="mt-3">
+            <a href="#" class="text-black fw-semibold me-3">FIGMA ↗</a>
+            <a href="#" class="text-black fw-semibold me-3">TWITTER</a>
+            <a href="#" class="text-black fw-semibold me-3">INSTAGRAM</a>
+            <a href="#" class="text-black fw-semibold">YOUTUBE</a>
+          </div>
+        </div>
+        <div class="col-md-4 text-md-end text-center">
+          <p class="mb-1">Privacy & Terms</p>
+          <p class="mb-2">Contact Us</p>
+          <button class="btn btn-dark rounded-circle" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+        </div>
+      </div>
+      <div class="text-center fw-bold pt-4 mt-4 border-top border-dark">
+        <marquee direction="right">FIGMA'S ⏎ MARVELOUSLY ⚪ CONSIDERED 🛡️ COLLECTION ⌛ OF ◆ OBJECTS 🛎️ FOR ⌛ OUR ⬛ TIME
+          ~ ON ~</marquee>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
