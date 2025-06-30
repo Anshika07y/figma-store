@@ -49,25 +49,29 @@
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            
+
         }
 
         .category-card {
             flex: 1 1 30%;
-            max-width: 250px;
+            max-width: 300px;
         }
 
         @media (max-width: 767px) {
             .category-wrapper {
-                flex-wrap: nowrap;
-                justify-content: flex-start;
+                flex-wrap: wrap;
+                /* allow wrapping on mobile */
+                justify-content: center;
+                /* center the items */
             }
 
             .category-card {
-                flex: 0 0 33.33%;
-                max-width: 33.33%;
+                flex: 0 0 80%;
+                /* take 80% of the container width */
+                max-width: 80%;
             }
         }
+
 
         #searchContainer {
             background: #f1e9e9;
@@ -85,7 +89,7 @@
         <input class="form-control" type="search" id="searchInput" placeholder="Search Products..." />
     </div>
     <header class="hero-green text-center" id="header">
-        
+
         <!-- NAVBAR -->
         <nav class="d-flex align-items-center justify-content-between px-3 py-3">
             <!-- Desktop Left -->
@@ -132,7 +136,7 @@
         </div>
 
         <!-- Search Input -->
-       
+
 
         <!-- Hero Images -->
         <div class="hero-images-wrapper" id="heroSection">
